@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+uv.lock
+walmart_dataset/.env
+pyproject.toml
+.python-version
+.env
+walmart_dbt/walmart_project/profiles.yml
+walmart_dbt/walmart_project/dbt_project.yml
+walmart_dbt/walmart_project/.user.yml
+walmart_dbt/logs/dbt.log
+.vscode/settings.json
+walmart-de.code-workspace
+walmart_dbt/walmart_project/models/source/sources.yml
+walmart_dbt/walmart_project/analyses/.gitkeep
+walmart_dbt/walmart_project/macros/.gitkeep
+walmart_dbt/walmart_project/snapshots/.gitkeep
+walmart_dbt/walmart_project/tests/.gitkeep
+walmart_dbt/walmart_project/seeds/.gitkeep
+walmart_setup/connection
