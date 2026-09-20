@@ -1,11 +1,11 @@
 snapshots:
-    - name: dim_customers
-        relation: ref('eph_customers')
-        description: "Snapshot of the dim_customers table"
-        config:
-            schema: gold
-            database: walmart
-            unique_key: customer_id
-            strategy: timestamp
-            updated_at: customer_updated_timestamp
-            dbt_valid_to_current: "to_date('9999-12-31')" # Specifies that the record is valid until `'9999-12-31'` instead of `NULL`.
+  - name: dim_customers
+    description: "Snapshot of the dim_customers table, capturing historical changes over time."
+    relation: ref('eph_customers')
+    config:
+      schema: gold
+      database: walmart
+      unique_key: customer_id
+      strategy: timestamp
+      updated_at: customer_updated_timestamp
+      dbt_valid_to_current: "to_date('9999-12-31')" # Specifies that the record is valid until `'9999-12-31'` instead of `NULL`.

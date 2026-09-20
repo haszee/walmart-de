@@ -1,5 +1,6 @@
 snapshots:
   - name: dim_stores
+    description: "Snapshot of the dim_stores table, capturing historical changes over time."
     relation: ref('eph_stores')
     config:
       schema: gold

@@ -1,5 +1,6 @@
 snapshots:
   - name: dim_employees
+    description: "Snapshot of the dim_employees table, capturing historical changes over time."
     relation: ref('eph_employees')
     config:
       schema: gold
