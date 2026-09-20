@@ -1,0 +1,98 @@
+version: 2
+
+models:
+  - name: products_t
+    description: "Cleaned products data processed incrementally."
+    config:
+      materialized: incremental
+      unique_key: product_id
+      incremental_strategy: merge
+    columns:
+      - name: product_id
+        description: "Primary key for the product."
+        tests:
+          - unique:
+              config:
+                where: "price > 0"
+          - not_null
+      - name: updated_timestamp
+        description: "Timestamp used to filter new/updated records."
+        tests:
+          - not_null
+
+  - name: orders_t
+    description: "Cleaned orders data processed incrementally."
+    config:
+      materialized: incremental
+      unique_key: order_id
+      incremental_strategy: merge
+    columns:
+      - name: order_id
+        description: "Primary key for the order."
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: "ID of the customer who placed the order."
+        tests:
+          - not_null
+  - name: employees_t
+    description: "Cleaned employees data processed incrementally."
+    config:
+      materialized: incremental
+      unique_key: employee_id
+      incremental_strategy: merge
+    columns:
+      - name: employee_id
+        description: "Primary key for the employee."
+        tests:
+          - unique
+          - not_null
+  
+  - name: customers_t
+    description: "Cleaned customers data processed incrementally."
+    config:
+      materialized: incremental
+      unique_key: customer_id
+      incremental_strategy: merge
+    columns:
+      - name: customer_id
+        description: "Primary key for the customer."
+        tests:
+          - unique
+          - not_null
+
+  - name: stores_t
+    description: "Cleaned stores data processed incrementally."
+    config:
+      materialized: incremental
+      unique_key: store_id
+      incremental_strategy: merge
+    columns:
+      - name: store_id
+        description: "Primary key for the store."
+        tests:
+          - unique
+          - not_null
+  
+  - name: order_items_t
+    description: "Cleaned order items data processed incrementally."
+    config:
+      materialized: incremental
+      unique_key: order_item_id
+      incremental_strategy: merge
+    columns:
+      - name: order_item_id
+        description: "Primary key for the order item."
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key referencing the order."
+        tests:
+          - not_null
+      - name: product_id
+        description: "Foreign key referencing the product."
+        tests:
+          - not_null
+  
